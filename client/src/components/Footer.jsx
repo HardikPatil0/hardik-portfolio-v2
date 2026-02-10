@@ -12,7 +12,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const API = "http://localhost:5000";
+const API = import.meta.env.VITE_API_URL;
+
 
 const Footer = () => {
   const [settings, setSettings] = useState(null);

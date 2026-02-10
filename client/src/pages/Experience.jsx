@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
-const API = "http://localhost:5000";
+const API = import.meta.env.VITE_API_URL;
 
 const Experience = () => {
   const [data, setData] = useState([]);

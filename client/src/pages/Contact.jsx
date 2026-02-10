@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Github, Linkedin, Instagram, Globe, Mail, Phone, MapPin } from "lucide-react";
 
-const API = "http://localhost:5000";
+const API = import.meta.env.VITE_API_URL;
+
 
 const Contact = () => {
   const [settings, setSettings] = useState(null);
