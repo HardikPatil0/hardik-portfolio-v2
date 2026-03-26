@@ -24,7 +24,10 @@ const __dirname = path.dirname(__filename);
 // Middleware
 app.use(
   cors({
-    origin: "https://hardik-portfolio-v2.vercel.app",
+    origin: [
+      "http://localhost:5173",
+      "https://hardik-portfolio-v2.vercel.app"
+    ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
