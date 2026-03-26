@@ -21,7 +21,10 @@ const AdminUnlock = () => {
     try {
       setLoading(true);
 
-      const res = axios.post(`${process.env.VITE_API_URL}/api/admin/unlock`, { key });
+      const res = await axios.post(
+  `${import.meta.env.VITE_API_URL}/api/admin/unlock`,
+  { key }
+);
 
       localStorage.setItem("adminToken", res.data.token);
 
