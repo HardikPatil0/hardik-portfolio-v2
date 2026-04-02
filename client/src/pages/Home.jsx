@@ -34,14 +34,14 @@ const Home = () => {
     <section className="min-h-screen w-full px-4 md:px-8 lg:px-16 py-12">
       <div className="w-full max-w-6xl mx-auto">
         {/* Badge */}
-        {profile?.showBadge && (
+        {/* {profile?.showBadge && (
           <div className="flex justify-center md:justify-start">
             <div className="inline-flex items-center gap-2 bg-[#0b1220] border border-gray-800 px-4 py-2 rounded-full text-sm text-gray-300">
               <span className="w-2 h-2 rounded-full bg-green-500"></span>
               {profile?.badgeText || "Available for Freelance Projects"}
             </div>
           </div>
-        )}
+        )} */}
 
         {/* HERO */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
