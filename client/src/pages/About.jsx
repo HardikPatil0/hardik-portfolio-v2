@@ -1,7 +1,26 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+const API = import.meta.env.VITE_API_URL;
 
 const About = () => {
+   const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await axios.get(`${API}/api/profile`);
+        setProfile(res.data);
+        
+      } catch (error) {
+        console.log("Profile fetch error:", error.message);
+      }
+    };
+
+    fetchProfile();
+  }, []);
   return (
     <section className="max-w-6xl mx-auto px-4 md:px-8 py-16">
       <h1 className="text-3xl md:text-4xl font-extrabold">
@@ -31,13 +50,23 @@ const About = () => {
 
           {/* CTA Buttons */}
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <a
-              href="/Hardik-Patil-Resume.pdf"
-              download
-              className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-xl font-bold text-white text-center"
-            >
-              Download Resume
-            </a>
+        {profile?.resumePdf ? (
+  <a
+    href={`${profile.resumePdf}?ik-download=true`}
+    target="_blank"
+    rel="noreferrer"
+    className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-xl font-bold text-white text-center"
+  >
+    Download Resume
+  </a>
+) : (
+  <button
+    disabled
+    className="bg-gray-700 px-6 py-3 rounded-xl font-bold text-white opacity-60 cursor-not-allowed"
+  >
+    Resume Not Available
+  </button>
+)}
 
             <Link
               to="/contact"

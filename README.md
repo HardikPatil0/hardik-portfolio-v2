@@ -27,6 +27,7 @@ The goal of this portfolio is to present my development work professionally for 
 * Mongoose
 * Nodemailer (Contact email notifications)
 * Multer (Image & Resume uploads)
+* Imagekit
 
 ---
 

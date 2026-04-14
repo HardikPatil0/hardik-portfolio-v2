@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = import.meta.env.VITE_API_URL;
 
 const Home = () => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+  const API = import.meta.env.VITE_API_URL;
+console.log("API URL:", API);
+
 
   const fetchProfile = async () => {
     try {

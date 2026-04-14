@@ -12,7 +12,7 @@ import projectRoutes from "./routes/projectRoutes.js";
 import experienceRoutes from "./routes/experienceRoutes.js";
 import achievementRoutes from "./routes/achievementRoutes.js";
 import settingsRoutes from "./routes/settingsRoutes.js";
-
+import uploadRoutes from "./routes/uploadRoutes.js";
 
 dotenv.config();
 
@@ -43,7 +43,7 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/experience", experienceRoutes);
 app.use("/api/achievements", achievementRoutes);
 app.use("/api/settings", settingsRoutes);
-
+app.use("/api/upload", uploadRoutes);
 
 // Routes
 app.get("/", (req, res) => {

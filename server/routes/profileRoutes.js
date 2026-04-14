@@ -1,6 +1,7 @@
 import express from "express";
 import Profile from "../models/Profile.js";
 import { upload } from "../middleware/upload.js";
+import imagekit from "../config/imagekit.js";
 
 const router = express.Router();
 
@@ -155,15 +156,22 @@ router.post("/upload-resume", upload.single("resume"), async (req, res) => {
       return res.status(400).json({ message: "Resume PDF is required" });
     }
 
-    const filePath = `/uploads/resume/${req.file.filename}`;
-
     let profile = await Profile.findOne();
-    if (!profile) profile = await Profile.create({});
+if (!profile) profile = await Profile.create({});
 
-    profile.resumePdf = filePath;
-    await profile.save();
+// 🔥 Upload to ImageKit
+const response = await imagekit.upload({
+  file: req.file.buffer,
+  fileName: req.file.originalname,
+  folder: "resumes",
+});
 
-    return res.json({ message: "Resume uploaded ✅", profile });
+// ✅ Save ImageKit URL
+profile.resumePdf = response.url;
+
+await profile.save();
+
+return res.json({ message: "Resume uploaded ✅", profile });
   } catch (error) {
     console.log("RESUME UPLOAD ERROR:", error);
     return res.status(500).json({ message: "Upload failed", error: error.message });
