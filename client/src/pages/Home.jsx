@@ -67,23 +67,23 @@ console.log("API URL:", API);
 
             {/* Buttons */}
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              {profile?.resumePdf ? (
-                <a
-                  href={`${API}${profile.resumePdf}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-xl font-bold text-white text-center"
-                >
-                  Download Resume
-                </a>
-              ) : (
-                <button
-                  disabled
-                  className="bg-gray-700 px-6 py-3 rounded-xl font-bold text-white opacity-60 cursor-not-allowed"
-                >
-                  Resume Not Uploaded
-                </button>
-              )}
+             {profile?.resumePdf ? (
+  <a
+    href={`${profile.resumePdf}?ik-download=true`}
+    target="_blank"
+    rel="noreferrer"
+    className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-xl font-bold text-white text-center"
+  >
+    Download Resume
+  </a>
+) : (
+  <button
+    disabled
+    className="bg-gray-700 px-6 py-3 rounded-xl font-bold text-white opacity-60 cursor-not-allowed"
+  >
+    Resume Not Uploaded
+  </button>
+)}
 
               <a
                 href="/contact"
